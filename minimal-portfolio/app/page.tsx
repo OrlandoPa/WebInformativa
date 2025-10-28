@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 
 export default function Home() {
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(false)
   const [activeSection, setActiveSection] = useState("")
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
 
@@ -55,7 +55,7 @@ export default function Home() {
 
       <main
         className="min-h-screen bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/fondo8.jpg')" }}
+        style={{ backgroundImage: isDark ? "url('/fondo3.jpg')" : "url('/fondo8.jpg')" }}
       >
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
 
@@ -80,9 +80,9 @@ export default function Home() {
               <div className="space-y-6 max-w-md">
                 <p className="text-lg sm:text-xl leading-relaxed">
                   Abogado, trabajador social y defensor de derechos humanos con experiencia y profesor en la UPAO.
-                  <span className="text-foreground"> Árbitro</span>,<span className="text-foreground"> Contrataciones para el estado</span>,
-                  y
-                  <span className="text-foreground"> experiencia de usuario</span>.
+                  <span className="text-foreground"> Árbitro</span>,<span className="text-foreground"> Contrataciones para el estado</span>
+
+                  <span className="text-foreground"></span>.
                 </p>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-foreground">
@@ -318,7 +318,7 @@ export default function Home() {
             </div>
 
             <div className="space-y-6 sm:space-y-8">
-              <div className="text-sm text-muted-foreground font-mono">Redes Sociales</div>
+              <div className="text-sm text-foreground font-mono">Redes Sociales</div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
