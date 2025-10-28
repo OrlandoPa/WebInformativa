@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: "Kevin Pelaez Cruzado - Consultorias",
   description: "Abogado, trabajador social y defensor de derechos humanos con experiencia y profesor en la UPAO.",
   generator: "v0.app",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 }
 
 export default function RootLayout({
@@ -22,7 +27,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geist.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {/* Fixed logo in the top-left corner */}
+        <img
+          src="/logo.png"
+          alt="Logo"
+          className="fixed top-4 left-4 w-10 h-10 sm:w-12 sm:h-12 rounded-md z-50 pointer-events-auto"
+        />
+
+        {children}
+      </body>
     </html>
   )
 }
