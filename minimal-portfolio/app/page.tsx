@@ -98,7 +98,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
             <div className="lg:col-span-3 space-y-6 sm:space-y-8">
               <div className="space-y-3 sm:space-y-2">
-                <div className="text-sm text-foreground font-mono tracking-wider">PORTFOLIO / 2025</div>
+                <div className="text-sm text-foreground font-mono tracking-wider"></div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
                   Kevin
                   <br />
@@ -130,10 +130,10 @@ export default function Home() {
                 <div className="space-y-2">
                   <div className="text-muted-foreground">Abogado - Árbitro</div>
                   <div className="text-muted-foreground">
-                    <div className="text-md text-foreground font-mono">Ubicado en:</div>
+                    <div className="text-md text-foreground font-mono">Contáctame:</div>
 
-                    <Link href="https://maps.app.goo.gl/CLKkiBV9ibyrD7v26" className="underline hover:text-foreground transition-colors duration-300">
-                      <span className="text-base sm:text-sm">Calle Amarilis 570 Urb. Palermo</span>
+                    <Link href="mailto:k.pelaez_c@hotmail.com" className="underline hover:text-foreground transition-colors duration-300">
+                      <span className="text-base sm:text-sm">k.pelaez_c@hotmail.com</span>
                     </Link>
                   </div>
                   <div className="text-xs text-muted-foreground">2012 — Actualidad</div>
@@ -352,7 +352,6 @@ export default function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   { name: "Numero de contacto", handle: "+51 922 863 714", url: "https://wa.me/51922863714" },
-                  { name: "Instagram", handle: "@kpelaezc.kpc", url: "https://www.instagram.com/kpelaezc.kpc/" },
                   { name: "LinkedIn", handle: "Kevin Pelaez Cruzado", url: "https://www.linkedin.com/in/kevin-pelaez-cruzado-b370b2a1/" },
                 ].map((social) => (
                   <Link
