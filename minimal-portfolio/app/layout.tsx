@@ -32,7 +32,7 @@ export default function RootLayout({
         <img
           src="/logo.png"
           alt="Logo"
-          className="fixed top-4 left-4 w-10 h-10 sm:w-12 sm:h-12 rounded-md z-50 pointer-events-auto"
+          className="fixed top-6 left-6 p-3 w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 xl:w-44 xl:h-44 rounded-md z-50 pointer-events-auto "
         />
 
         {children}
