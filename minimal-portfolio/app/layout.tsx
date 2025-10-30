@@ -40,7 +40,7 @@ export default function RootLayout({
             <img
               src="/logo.png"
               alt="Logo"
-              className="p-3 w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 xl:w-44 xl:h-44 rounded-md pointer-events-auto bg-white/10"
+              className="p-3 w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 xl:w-44 xl:h-44 rounded-md pointer-events-auto"
             />
           </Link>
         {children}

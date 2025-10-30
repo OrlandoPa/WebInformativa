@@ -93,7 +93,7 @@ export default function Home() {
           ref={(el) => {
             sectionsRef.current[0] = el
           }}
-          className="min-h-screen flex items-center opacity-0 pt-36 sm:pt-40 md:pt-44 lg:pt-48 xl:pt-56"
+          className="min-h-screen flex items-center opacity-0 pt-28 sm:pt-32 md:pt-36 lg:pt-20 xl:pt-24"
         >
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
             <div className="lg:col-span-3 space-y-6 sm:space-y-8">
@@ -167,75 +167,60 @@ export default function Home() {
           ref={(el) => {
             sectionsRef.current[1] = el
           }}
-          className="min-h-screen py-20 sm:py-32 opacity-0"
+          className="min-h-screen py-12 sm:py-20 opacity-0"
         >
-          <div className="space-y-12 sm:space-y-16">
+          <div className="space-y-10 sm:space-y-12">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <h2 className="text-3xl sm:text-4xl font-light">Experiencia Laboral</h2>
-              <div className="text-sm  font-mono">2012 — 2025</div>
+              <h2 className="text-3xl sm:text-4xl font-light">Información Basica</h2>
+              <div className="text-sm font-mono">2012 — 2025</div>
             </div>
 
-            <div className="space-y-8 sm:space-y-12">
-              {[
-                {
-                  year: "ago. 2023",
-                  role: "Miembro de la Comision Especializada de Arbitraje y Medios y Solución de Conflictos",
-                  company: "Colegio de Abogados de La Libertad",
-                  description: "descp completa",
-                  tech: ["2 años", "Actualmente", ""],
-                },
-                {
-                  year: "mar. 2023",
-                  role: "Profesor de Derecho",
-                  company: "Universidad Privada Antenor Orrego (UPAO)",
-                  description: "descp completa",
-                  tech: ["2 años", "Actualmente", ""],
-                },
-                {
-                  year: "oct. 2018",
-                  role: "Árbitro en contrataciones del estado",
-                  company: "Profesional Independiente",
-                  description: "descp completa",
-                  tech: ["7 años", "Actualmente", ""],
-                },
-                {
-                  year: "ago. 2018",
-                  role: "Abogado Consultor",
-                  company: "Profesional Independiente",
-                  description: "descp completa",
-                  tech: ["8 años", "Actualmente", ""],
-                },
-              ].map((job, index) => (
-                <div
-                  key={index}
-                  className="group grid lg:grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-8 border-b border-border/50 hover:border-border transition-colors duration-500"
-                >
-                  <div className="lg:col-span-2">
-                    <div className="text-xl sm:text-2xl font-light text-muted-foreground group-hover:text-foreground transition-colors duration-500">
-                      {job.year}
-                    </div>
-                  </div>
+            {/* Row 1: Text left, Image right */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-xl font-medium">Abogado - Experiencia profesional</h3>
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  Profesional del derecho con amplia experiencia en arbitraje, contrataciones públicas y asesoría legal para
+                  instituciones públicas y privadas. Ofrezco servicios de consultoría, representación y capacitación en temas
+                  de derecho administrativo, contratos y resolución de conflictos.
+                </p>
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  Trabajo enfocado en resultados, cumplimiento normativo y protección de derechos. Experiencia en
+                  elaboración de informes periciales, defensa en procesos administrativos y asesoramiento en licitaciones.
+                </p>
+              </div>
 
-                  <div className="lg:col-span-6 space-y-3">
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-medium">{job.role}</h3>
-                      <div className="font-light text-muted-foreground group-hover:text-foreground transition-colors duration-500">{job.company}</div>
-                    </div>
-                    <p className="font-light text-muted-foreground group-hover:text-foreground transition-colors duration-500 leading-relaxed max-w-lg">{job.description}</p>
-                  </div>
+              <div className="flex justify-center lg:justify-end">
+                <img
+                  src="/Abogado.jpg"
+                  alt="Abogado"
+                  className="w-48 sm:w-56 md:w-64 lg:w-72 xl:w-80 h-auto rounded-md shadow-md object-cover"
+                />
+              </div>
+            </div>
 
-                  <div className="lg:col-span-4 flex flex-wrap gap-2 lg:justify-end mt-2 lg:mt-0">
-                    {job.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs  rounded group-hover:border-muted-foreground/50 transition-colors duration-500"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
+            {/* Row 2: Image left, Text right */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div className="flex justify-center lg:justify-start">
+                <img
+                  src="abogado2.jpg"
+                  alt="Trabajo jurídico"
+                  className="w-48 sm:w-56 md:w-64 lg:w-72 xl:w-80 h-auto rounded-md shadow-md object-cover"
+                />
+              </div>
+
+              <div>
+                <h3 className="text-xl font-medium">Servicios y áreas de práctica</h3>
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  - Asesoría en contrataciones públicas y procesos de licitación.
+                </p>
+                <p className="mt-2 text-muted-foreground leading-relaxed">
+                  - Representación en arbitrajes y resolución de conflictos.
+                </p>
+                <p className="mt-2 text-muted-foreground leading-relaxed">
+                  - Elaboración de contratos, due diligence y opinión legal.
+                </p>
+              </div>
             </div>
           </div>
         </section>
