@@ -1,6 +1,16 @@
 "use client"
 
 import Link from "next/link"
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogHeader,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog"
 import { useEffect, useRef, useState } from "react"
 
 export default function Home() {
@@ -120,8 +130,8 @@ export default function Home() {
 
               <div className="space-y-6 max-w-md">
                 <p className="text-lg sm:text-xl leading-relaxed">
-                  Abogado peruano especializado en construcción, arbitraje y gestión pública, con maestrías en Arbitraje y Mediación (Universidad de Salamanca) y en Gestión Pública. 
-                  Catedrático de la Facultad de Derecho y Ciencias Políticas de la Universidad Privada Antenor Orrego.
+                  Abogado peruano especializado en construcción, arbitraje y gestión pública, con maestrías en Arbitraje y Mediación y en Gestión Pública. 
+                  Catedrático de la Facultad de Derecho y Ciencias Políticas de la UPAO.
                   <span className="text-foreground"></span><span className="text-foreground"></span>
 
                   <span className="text-foreground"></span>
@@ -147,9 +157,69 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="text-md text-foreground font-mono">Conoce un poco más sobre mi:</div>
                 <div className="space-y-2">
-                  <Link href="/" className="underline hover:text-foreground transition-colors duration-300">
-                  <span className="text-base sm:text-sm">Conocer detalles</span>
-                  </Link>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button
+                        type="button"
+                        aria-haspopup="dialog"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-background/70 border border-border text-foreground font-medium hover:bg-muted-foreground/10 transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      >
+                        <span className="text-base sm:text-sm">Conocer detalles</span>
+                      </button>
+                    </DialogTrigger>
+
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Kevin Peláez Cruzado</DialogTitle>
+                        <DialogDescription>
+                          Abogado peruano especializado en construcción, arbitraje y gestión pública, con maestrías en Arbitraje y Mediación (Universidad de Salamanca) y en Gestión Pública.
+                          Experiencia asesorando en sector privado como a los distintos niveles de gobierno en contrataciones, proyectos de infraestructura y obras públicas.
+                          Árbitro en nóminas nacionales e internacionales.
+                        </DialogDescription>
+                      </DialogHeader>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                        <div className="space-y-3">
+                          <img
+                            src="/fotopasaporte.jpg"
+                            alt="Kevin Pelaez Cruzado"
+                            className="w-40 h-auto rounded-md shadow-md object-cover"
+                          />
+                          <div className="text-sm text-muted-foreground">
+                            Catedrático de la Facultad de Derecho y Ciencias Políticas de la Universidad Privada Antenor Orrego. Maestrías en Arbitraje y Mediación
+                            (Universidad de Salamanca) y Gestión Pública.
+                          </div>
+                        </div>
+
+                        <div className="space-y-3">
+                          <h4 className="font-medium">Experiencia</h4>
+                          <ul className="list-disc list-inside text-sm text-muted-foreground">
+                            <li>Asesoría en contrataciones públicas y procesos de licitación.</li>
+                            <li>Representación en arbitrajes y resolución de conflictos.</li>
+                            <li>Elaboración de contratos y due diligence.</li>
+                          </ul>
+
+                          <h4 className="font-medium mt-2">CV Resumido</h4>
+                          <div className="text-sm flex flex-col gap-2">
+                            <a
+                              href="/CV Kevin Pelaez Cruzado 28-08-2025 Resumido.pdf"
+                              download="CV_Kevin_Pelaez_Resumido.pdf"
+                              className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-background/60 border border-border hover:bg-muted-foreground/10 transition-all duration-150 w-max"
+                            >
+                              Descargar CV (PDF)
+                            </a>
+                            <div className="text-muted-foreground">La Libertad, Trujillo - Perú</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <DialogFooter>
+                        <DialogClose className="px-4 py-2 rounded bg-muted-foreground/10 hover:bg-muted-foreground/20">
+                          Cerrar
+                        </DialogClose>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
                   <p></p>
                   <div className="text-muted-foreground">
                     <div className="text-md text-foreground font-mono">Contáctame:</div>
