@@ -117,8 +117,8 @@ export default function Home() {
           }}
           className="min-h-screen flex items-center opacity-0 pt-28 sm:pt-32 md:pt-36 lg:pt-20 xl:pt-24"
         >
-          <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
-            <div className="lg:col-span-3 space-y-6 sm:space-y-8 anim-item" data-anim="left">
+          <div className="grid lg:grid-cols-5 gap-2 sm:gap-6 lg:gap-16 w-full">
+            <div className="lg:col-span-3 space-y-4 sm:space-y-6 anim-item" data-anim="left">
               <div className="space-y-3 sm:space-y-2">
                 <div className="text-sm text-foreground font-mono tracking-wider"></div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
@@ -130,8 +130,7 @@ export default function Home() {
 
               <div className="space-y-6 max-w-md">
                 <p className="text-lg sm:text-xl leading-relaxed">
-                  Abogado peruano especializado en construcción, arbitraje y gestión pública, con maestrías en Arbitraje y Mediación y en Gestión Pública. 
-                  Catedrático de la Facultad de Derecho y Ciencias Políticas de la UPAO.
+                  Abogado peruano especializado en construcción, arbitraje y gestión pública. Maestrías en Arbitraje y Mediación, y en Gestión Pública. Catedrático de Derecho y Ciencias Políticas de la UPAO.
                   <span className="text-foreground"></span><span className="text-foreground"></span>
 
                   <span className="text-foreground"></span>
@@ -147,12 +146,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0 anim-item" data-anim="right">
+            <div className="lg:col-span-2 flex flex-col justify-start sm:justify-end space-y-2 sm:space-y-4 -mt-2 sm:mt-2 lg:mt-0 anim-item" data-anim="right">
               <img
                 src="KEVIN_PELAEZ_CRUZADO-1.png"
                 alt="Kevin Pelaez Cruzado"
                 /* shadow-md */ 
-                className="rounded-md w-32 sm:w-40 md:w-48 lg:w-full h-auto object-cover mx-auto"
+                className="rounded-md w-40 sm:w-48 md:w-56 lg:w-full h-auto object-cover mx-auto"
               />
               <div className="space-y-4">
                 <div className="text-md text-foreground font-mono">Conoce un poco más sobre mi:</div>
