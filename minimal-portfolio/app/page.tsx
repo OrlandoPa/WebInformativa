@@ -23,34 +23,6 @@ export default function Home() {
   }, [isDark])
 
   useEffect(() => {
-    // On mobile we want each .anim-item to animate independently as it scrolls into view
-    const mqMobile = window.matchMedia("(max-width: 767px)")
-
-    if (mqMobile.matches) {
-      const itemObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const el = entry.target as HTMLElement
-              const dir = (el.dataset?.anim as string) || "up"
-              const cls = dir === "left" ? "animate-fade-in-left" : dir === "right" ? "animate-fade-in-right" : "animate-fade-in-up"
-              el.classList.add(cls)
-              // mark section active if this item belongs to a section
-              const section = el.closest("section") as HTMLElement | null
-              if (section) setActiveSection(section.id)
-              // stop observing once animated
-              itemObserver.unobserve(el)
-            }
-          })
-        },
-        { threshold: 0.25, rootMargin: "0px 0px -10% 0px" },
-      )
-
-      const items = Array.from(document.querySelectorAll<HTMLElement>(".anim-item"))
-      items.forEach((it) => itemObserver.observe(it))
-
-      return () => itemObserver.disconnect()
-    } else {
       // Desktop/tablet: animate per-section with staggered children
       const observer = new IntersectionObserver(
         (entries) => {
@@ -81,8 +53,7 @@ export default function Home() {
       })
 
       return () => observer.disconnect()
-    }
-  }, [])
+    }, [])
 
   const toggleTheme = () => {
     setIsDark(!isDark)
