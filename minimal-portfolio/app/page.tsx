@@ -17,8 +17,19 @@ export default function Home() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up")
-            setActiveSection(entry.target.id)
+            const target = entry.target as HTMLElement
+            // animate the section container
+            target.classList.add("animate-fade-in-up")
+            setActiveSection(target.id)
+
+            // animate marked children with a small stagger
+            const animatedChildren = Array.from(target.querySelectorAll<HTMLElement>(".anim-item"))
+            animatedChildren.forEach((el, i) => {
+              const dir = (el.dataset?.anim as string) || "up"
+              const cls = dir === "left" ? "animate-fade-in-left" : dir === "right" ? "animate-fade-in-right" : "animate-fade-in-up"
+              // stagger each child slightly
+              setTimeout(() => el.classList.add(cls), i * 120)
+            })
           }
         })
       },
@@ -96,7 +107,7 @@ export default function Home() {
           className="min-h-screen flex items-center opacity-0 pt-28 sm:pt-32 md:pt-36 lg:pt-20 xl:pt-24"
         >
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
-            <div className="lg:col-span-3 space-y-6 sm:space-y-8">
+            <div className="lg:col-span-3 space-y-6 sm:space-y-8 anim-item" data-anim="left">
               <div className="space-y-3 sm:space-y-2">
                 <div className="text-sm text-foreground font-mono tracking-wider"></div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
@@ -125,7 +136,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
+            <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0 anim-item" data-anim="right">
               <img
                 src="KEVIN_PELAEZ_CRUZADO-1.png"
                 alt="Kevin Pelaez Cruzado"
@@ -182,7 +193,7 @@ export default function Home() {
 
             {/* Row 1: Text left, Image right */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div>
+              <div className="anim-item" data-anim="left">
                 <h3 className="text-xl font-medium">Abogado - Experiencia profesional</h3>
                 <p className="mt-4 text-muted-foreground leading-relaxed">
                   Profesional del derecho con amplia experiencia en arbitraje, contrataciones públicas y asesoría legal para
@@ -195,7 +206,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex justify-center lg:justify-end">
+              <div className="flex justify-center lg:justify-end anim-item" data-anim="right">
                 <img
                   src="/Abogado.jpg"
                   alt="Abogado"
@@ -206,7 +217,7 @@ export default function Home() {
 
             {/* Row 2: Content then Image on mobile; Image left on lg */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div className="lg:order-2">
+              <div className="lg:order-2 anim-item" data-anim="right">
                 <h3 className="text-xl font-medium">Servicios y áreas de práctica</h3>
                 <p className="mt-4 text-muted-foreground leading-relaxed">
                   - Asesoría en contrataciones públicas y procesos de licitación.
@@ -219,7 +230,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex justify-center lg:justify-start lg:order-1">
+              <div className="flex justify-center lg:justify-start lg:order-1 anim-item" data-anim="left">
                 <img
                   src="abogado2.jpg"
                   alt="Trabajo jurídico"
@@ -232,7 +243,7 @@ export default function Home() {
 
             {/* Row 3: Text left, Image right (Supervisión) */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div>
+              <div className="anim-item" data-anim="left">
                 <h3 className="text-xl font-medium">Supervisión de Expedientes</h3>
                 <p className="mt-4 text-muted-foreground leading-relaxed">
                   Coordinación y supervisión de procesos administrativos y expedientes técnicos, con seguimiento a
@@ -240,7 +251,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex justify-center lg:justify-end">
+              <div className="flex justify-center lg:justify-end anim-item" data-anim="right">
                 <img
                   src="/supervisionmaqueta.png"
                   alt="Supervisión"
@@ -251,7 +262,7 @@ export default function Home() {
 
             {/* Row 4: Content then Image on mobile; Image left on lg */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div className="lg:order-2">
+              <div className="lg:order-2 anim-item" data-anim="right">
                 <h3 className="text-xl font-medium">Debate y Capacitación</h3>
                 <p className="mt-4 text-muted-foreground leading-relaxed">
                   Facilitación de debates públicos y talleres de capacitación para equipos legales y administrativos,
@@ -259,7 +270,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex justify-center lg:justify-start lg:order-1">
+              <div className="flex justify-center lg:justify-start lg:order-1 anim-item" data-anim="left">
                 <img
                   src="/debatemaqueta.png"
                   alt="Debate"
@@ -270,7 +281,7 @@ export default function Home() {
 
             {/* Row 5: Text left, Image right (Documentación) */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div>
+              <div className="anim-item" data-anim="left">
                 <h3 className="text-xl font-medium">Documentación y Tramitación</h3>
                 <p className="mt-4 text-muted-foreground leading-relaxed">
                   Preparación, revisión y tramitación de documentación técnica y legal, asegurando consistencia y
@@ -278,7 +289,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex justify-center lg:justify-end">
+              <div className="flex justify-center lg:justify-end anim-item" data-anim="right">
                 <img
                   src="/documentacionmaqueta.png"
                   alt="Documentación"
