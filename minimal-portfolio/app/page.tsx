@@ -108,10 +108,11 @@ export default function Home() {
 
               <div className="space-y-6 max-w-md">
                 <p className="text-lg sm:text-xl leading-relaxed">
-                  Abogado, trabajador social y defensor de derechos humanos con experiencia y profesor en la UPAO.
-                  <span className="text-foreground"> Árbitro</span>,<span className="text-foreground"> Contrataciones para el estado</span>
+                  Abogado peruano especializado en construcción, arbitraje y gestión pública, con maestrías en Arbitraje y Mediación (Universidad de Salamanca) y en Gestión Pública. 
+                  Catedrático de la Facultad de Derecho y Ciencias Políticas de la Universidad Privada Antenor Orrego.
+                  <span className="text-foreground"></span><span className="text-foreground"></span>
 
-                  <span className="text-foreground"></span>.
+                  <span className="text-foreground"></span>
                 </p>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-foreground">
@@ -128,12 +129,16 @@ export default function Home() {
               <img
                 src="KEVIN_PELAEZ_CRUZADO-1.png"
                 alt="Kevin Pelaez Cruzado"
-                className="rounded-md shadow-md w-32 sm:w-40 md:w-48 lg:w-full h-auto object-cover mx-auto"
+                /* shadow-md */ 
+                className="rounded-md w-32 sm:w-40 md:w-48 lg:w-full h-auto object-cover mx-auto"
               />
               <div className="space-y-4">
-                <div className="text-md text-foreground font-mono">CARGO:</div>
+                <div className="text-md text-foreground font-mono">Conoce un poco más sobre mi:</div>
                 <div className="space-y-2">
-                  <div className="text-muted-foreground">Abogado - Árbitro</div>
+                  <Link href="/" className="underline hover:text-foreground transition-colors duration-300">
+                  <span className="text-base sm:text-sm">Conocer detalles</span>
+                  </Link>
+                  <p></p>
                   <div className="text-muted-foreground">
                     <div className="text-md text-foreground font-mono">Contáctame:</div>
 
@@ -199,17 +204,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Row 2: Image left, Text right */}
+            {/* Row 2: Content then Image on mobile; Image left on lg */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div className="flex justify-center lg:justify-start">
-                <img
-                  src="abogado2.jpg"
-                  alt="Trabajo jurídico"
-                  className="w-48 sm:w-56 md:w-64 lg:w-72 xl:w-80 h-auto rounded-md shadow-md object-cover"
-                />
-              </div>
-
-              <div>
+              <div className="lg:order-2">
                 <h3 className="text-xl font-medium">Servicios y áreas de práctica</h3>
                 <p className="mt-4 text-muted-foreground leading-relaxed">
                   - Asesoría en contrataciones públicas y procesos de licitación.
@@ -220,6 +217,73 @@ export default function Home() {
                 <p className="mt-2 text-muted-foreground leading-relaxed">
                   - Elaboración de contratos, due diligence y opinión legal.
                 </p>
+              </div>
+
+              <div className="flex justify-center lg:justify-start lg:order-1">
+                <img
+                  src="abogado2.jpg"
+                  alt="Trabajo jurídico"
+                  className="w-48 sm:w-56 md:w-64 lg:w-72 xl:w-80 h-auto rounded-md shadow-md object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Additional Rows: supervision, debate, documentacion */}
+
+            {/* Row 3: Text left, Image right (Supervisión) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-xl font-medium">Supervisión de Expedientes</h3>
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  Coordinación y supervisión de procesos administrativos y expedientes técnicos, con seguimiento a
+                  cumplimiento de plazos y requerimientos formales.
+                </p>
+              </div>
+
+              <div className="flex justify-center lg:justify-end">
+                <img
+                  src="/supervisionmaqueta.png"
+                  alt="Supervisión"
+                  className="w-44 sm:w-56 md:w-64 lg:w-72 xl:w-80 h-auto rounded-md shadow-md object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Row 4: Content then Image on mobile; Image left on lg */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div className="lg:order-2">
+                <h3 className="text-xl font-medium">Debate y Capacitación</h3>
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  Facilitación de debates públicos y talleres de capacitación para equipos legales y administrativos,
+                  orientados a mejorar políticas y procesos internos.
+                </p>
+              </div>
+
+              <div className="flex justify-center lg:justify-start lg:order-1">
+                <img
+                  src="/debatemaqueta.png"
+                  alt="Debate"
+                  className="w-44 sm:w-56 md:w-64 lg:w-72 xl:w-80 h-auto rounded-md shadow-md object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Row 5: Text left, Image right (Documentación) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-xl font-medium">Documentación y Tramitación</h3>
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  Preparación, revisión y tramitación de documentación técnica y legal, asegurando consistencia y
+                  cumplimiento de requisitos formales para su presentación ante entidades públicas.
+                </p>
+              </div>
+
+              <div className="flex justify-center lg:justify-end">
+                <img
+                  src="/documentacionmaqueta.png"
+                  alt="Documentación"
+                  className="w-44 sm:w-56 md:w-64 lg:w-72 xl:w-80 h-auto rounded-md shadow-md object-cover"
+                />
               </div>
             </div>
           </div>
@@ -256,7 +320,7 @@ export default function Home() {
                   readTime: "6 min",
                 },
                 {
-                  title: "Hola rango, avisa si lo lees",
+                  title: "Hola HOLA hoka AAA",
                   excerpt: "desc. completa",
                   date: "Sep 2024",
                   readTime: "4 min",
@@ -341,7 +405,7 @@ export default function Home() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { name: "Numero de contacto", handle: "+51 922 863 714", url: "https://wa.me/51922863714" },
+                  { name: "Número de contacto", handle: "+51 922 863 714", url: "https://wa.me/51922863714" },
                   { name: "LinkedIn", handle: "Kevin Pelaez Cruzado", url: "https://www.linkedin.com/in/kevin-pelaez-cruzado-b370b2a1/" },
                 ].map((social) => (
                   <Link
