@@ -23,35 +23,65 @@ export default function Home() {
   }, [isDark])
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const target = entry.target as HTMLElement
-            // animate the section container
-            target.classList.add("animate-fade-in-up")
-            setActiveSection(target.id)
+    // On mobile we want each .anim-item to animate independently as it scrolls into view
+    const mqMobile = window.matchMedia("(max-width: 767px)")
 
-            // animate marked children with a small stagger
-            const animatedChildren = Array.from(target.querySelectorAll<HTMLElement>(".anim-item"))
-            const STAGGER = 80
-            animatedChildren.forEach((el, i) => {
+    if (mqMobile.matches) {
+      const itemObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement
               const dir = (el.dataset?.anim as string) || "up"
               const cls = dir === "left" ? "animate-fade-in-left" : dir === "right" ? "animate-fade-in-right" : "animate-fade-in-up"
-              // stagger each child slightly (reduced)
-              setTimeout(() => el.classList.add(cls), i * STAGGER)
-            })
-          }
-        })
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
-    )
+              el.classList.add(cls)
+              // mark section active if this item belongs to a section
+              const section = el.closest("section") as HTMLElement | null
+              if (section) setActiveSection(section.id)
+              // stop observing once animated
+              itemObserver.unobserve(el)
+            }
+          })
+        },
+        { threshold: 0.25, rootMargin: "0px 0px -10% 0px" },
+      )
 
-    sectionsRef.current.forEach((section) => {
-      if (section) observer.observe(section)
-    })
+      const items = Array.from(document.querySelectorAll<HTMLElement>(".anim-item"))
+      items.forEach((it) => itemObserver.observe(it))
 
-    return () => observer.disconnect()
+      return () => itemObserver.disconnect()
+    } else {
+      // Desktop/tablet: animate per-section with staggered children
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const target = entry.target as HTMLElement
+              // animate the section container
+              target.classList.add("animate-fade-in-up")
+              setActiveSection(target.id)
+
+              // animate marked children with a small stagger
+              const animatedChildren = Array.from(target.querySelectorAll<HTMLElement>(".anim-item"))
+              const STAGGER = 80
+              animatedChildren.forEach((el, i) => {
+                const dir = (el.dataset?.anim as string) || "up"
+                const cls = dir === "left" ? "animate-fade-in-left" : dir === "right" ? "animate-fade-in-right" : "animate-fade-in-up"
+                // stagger each child slightly (reduced)
+                setTimeout(() => el.classList.add(cls), i * STAGGER)
+              })
+            }
+          })
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
+      )
+
+      sectionsRef.current.forEach((section) => {
+        if (section) observer.observe(section)
+      })
+
+      return () => observer.disconnect()
+    }
   }, [])
 
   const toggleTheme = () => {
