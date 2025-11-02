@@ -24,16 +24,17 @@ export default function Home() {
 
             // animate marked children with a small stagger
             const animatedChildren = Array.from(target.querySelectorAll<HTMLElement>(".anim-item"))
+            const STAGGER = 80
             animatedChildren.forEach((el, i) => {
               const dir = (el.dataset?.anim as string) || "up"
               const cls = dir === "left" ? "animate-fade-in-left" : dir === "right" ? "animate-fade-in-right" : "animate-fade-in-up"
-              // stagger each child slightly
-              setTimeout(() => el.classList.add(cls), i * 120)
+              // stagger each child slightly (reduced)
+              setTimeout(() => el.classList.add(cls), i * STAGGER)
             })
           }
         })
       },
-      { threshold: 0.3, rootMargin: "0px 0px -20% 0px" },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
     )
 
     sectionsRef.current.forEach((section) => {
@@ -308,7 +309,7 @@ export default function Home() {
           className="min-h-screen py-20 sm:py-32 opacity-0"
         >
           <div className="space-y-12 sm:space-y-16">
-            <h2 className="text-3xl sm:text-4xl font-light">Estudios Recientes</h2>
+            <h2 className="text-3xl sm:text-4xl font-light anim-item" data-anim="left">Estudios Recientes</h2>
 
             <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
               {[
@@ -339,7 +340,8 @@ export default function Home() {
               ].map((post, index) => (
                 <article
                   key={index}
-                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer"
+                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer anim-item"
+                  data-anim={index % 2 === 0 ? "left" : "right"}
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
@@ -383,11 +385,11 @@ export default function Home() {
           }}
           className="py-20 sm:py-32 opacity-0"
         >
-          <div className="grid lg:grid-cols-2 gap-12 sm:gap-16">
+            <div className="grid lg:grid-cols-2 gap-12 sm:gap-16">
             <div className="space-y-6 sm:space-y-8">
-              <h2 className="text-3xl sm:text-4xl font-light">Contáctame</h2>
+              <h2 className="text-3xl sm:text-4xl font-light anim-item" data-anim="left">Contáctame</h2>
 
-              <div className="space-y-6">
+              <div className="space-y-6 anim-item" data-anim="left">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
                   Atento a cualquier oportunidad, colaboración o conversación en derecho.
                 </p>
@@ -395,7 +397,7 @@ export default function Home() {
                 <div className="space-y-4">
                   <Link
                     href="mailto:k.pelaez_c@hotmail.com"
-                    className="group flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors duration-300"
+                    className="group flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors duration-300 anim-item"
                   >
                     <span className="text-base sm:text-lg">k.pelaez_c@hotmail.com</span>
                     <svg
@@ -412,17 +414,18 @@ export default function Home() {
             </div>
 
             <div className="space-y-6 sm:space-y-8">
-              <div className="text-sm text-foreground font-mono">Redes Sociales</div>
+              <div className="text-sm text-foreground font-mono anim-item" data-anim="left">Redes Sociales</div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   { name: "Número de contacto", handle: "+51 922 863 714", url: "https://wa.me/51922863714" },
                   { name: "LinkedIn", handle: "Kevin Pelaez Cruzado", url: "https://www.linkedin.com/in/kevin-pelaez-cruzado-b370b2a1/" },
-                ].map((social) => (
+                ].map((social, idx) => (
                   <Link
                     key={social.name}
                     href={social.url}
-                    className="group p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-sm"
+                    className="group p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-sm anim-item"
+                    data-anim={idx % 2 === 0 ? "left" : "right"}
                   >
                     <div className="space-y-2">
                       <div className="text-foreground group-hover:text-muted-foreground transition-colors duration-300">
